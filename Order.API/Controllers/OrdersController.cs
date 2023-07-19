@@ -8,9 +8,11 @@ using Shared;
 
 namespace Order.API.Controllers
 {
-    
-    public class OrdersController 
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OrdersController : ControllerBase
     {
+        
 
         private readonly AppDbContext _context;
 
