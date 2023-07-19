@@ -17,7 +17,7 @@ namespace Order.API.Model
 
         public OrderStatus Status { get; set; }
 
-        public string Message { get; set; }
+        public string Message { get; set; } = "";
     }
 
     public enum OrderStatus
