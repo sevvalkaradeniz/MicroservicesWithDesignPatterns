@@ -86,7 +86,7 @@ namespace Stock.API.Consumers
             }
 
 
-            throw new NotImplementedException();
+           
         }
     }
 }
