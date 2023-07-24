@@ -82,7 +82,9 @@ namespace Stock.API.Consumers
 
                     OrderId =context.Message.OrderId,
                     Message="Not enough stock",
-                });  
+                });
+
+                _logger.LogInformation($" Stock was  not reserved for Buyer Id: {context.Message.BuyerId}");
             }
 
 

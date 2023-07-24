@@ -27,7 +27,7 @@ namespace Order.API.Controllers
 
         }
 
-        [HttpPost] //end point, post since we record and order
+        [HttpPost] //end point, post since we record the order
         public async Task<IActionResult> Create(OrderCreateDto orderCreate)  
         {
             //The IActionResult return type is appropriate when multiple ActionResult return types are possible in an action.
