@@ -16,6 +16,7 @@ builder.Services.AddMassTransit(x =>
 {
     //inform about the consumer
     x.AddConsumer<StockReservedEventConsumer>();
+   
 
 
     x.UsingRabbitMq((context, cfg) =>
@@ -27,6 +28,7 @@ builder.Services.AddMassTransit(x =>
             // with "e" declare which consumer will listen this queue (StockReservedEventQueueName)
             e.ConfigureConsumer<StockReservedEventConsumer>(context);
         });
+        
         cfg.Host(builder.Configuration.GetConnectionString("RabbitMQ"));
     });
 });

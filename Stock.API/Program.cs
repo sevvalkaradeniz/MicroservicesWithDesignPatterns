@@ -17,6 +17,7 @@ builder.Services.AddMassTransit(x =>
 {
     //inform about the consumer
     x.AddConsumer<OrderCreatedEventConsumer>();
+    x.AddConsumer<PaymentFailedEventConsumer>();
 
 
     x.UsingRabbitMq((context, cfg) =>
@@ -27,6 +28,11 @@ builder.Services.AddMassTransit(x =>
         {
             // with e declare which consumer will listen this queue (StockOrderCreatedEventQueueName)
             e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
+        });
+        cfg.ReceiveEndpoint(RabbitMQSettings.StockPaymentFailedEventQueueName, e => //since StockReservedEvent used send method our queue name is already defined
+        {
+            // with "e" declare which consumer will listen this queue (StockReservedEventQueueName)
+            e.ConfigureConsumer<PaymentFailedEventConsumer>(context);
         });
         cfg.Host(builder.Configuration.GetConnectionString("RabbitMQ"));
     });
