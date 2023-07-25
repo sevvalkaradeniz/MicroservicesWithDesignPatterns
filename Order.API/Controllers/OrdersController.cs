@@ -19,6 +19,8 @@ namespace Order.API.Controllers
         // for sending our event to the rabbitMQ
         private readonly IPublishEndpoint _publishEndpoint;
 
+        
+
 
         public OrdersController(AppDbContext context, IPublishEndpoint publishEndpoint) // send both database variable and rabbitMQ variable to the constructor
         {
