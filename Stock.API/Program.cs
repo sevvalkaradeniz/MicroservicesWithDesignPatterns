@@ -23,7 +23,7 @@ builder.Services.AddMassTransit(x =>
     {
 
         //declare the queue 
-        cfg.ReceiveEndpoint(RabbitMQSettings.StockOrderCreatedEvenetQueueName,e =>
+        cfg.ReceiveEndpoint(RabbitMQSettings.StockOrderCreatedEventQueueName,e =>
         {
             // with e declare which consumer will listen this queue (StockOrderCreatedEventQueueName)
             e.ConfigureConsumer<OrderCreatedEventConsumer>(context);
