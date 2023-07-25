@@ -12,7 +12,7 @@ namespace Stock.API.Consumers
         private readonly AppDbContext _context;
 
         //for log
-        private ILogger<OrderCreatedEventConsumer> _logger;
+        private readonly ILogger<OrderCreatedEventConsumer> _logger;
 
         //since storckReservedEvent will only be listened by PaymentAPI, we can use send method instead of publish
         private readonly ISendEndpointProvider _sendEndpointProvider;
