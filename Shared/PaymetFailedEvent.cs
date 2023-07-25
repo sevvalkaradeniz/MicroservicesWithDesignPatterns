@@ -13,5 +13,7 @@ namespace Shared
         public string BuyerId { get; set; }
 
         public String? Message { get; set; }
+
+        public List<OrderItemMessage> OrderItems { get; set; }
     }
 }
