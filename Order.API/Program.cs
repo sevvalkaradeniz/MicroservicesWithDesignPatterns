@@ -17,13 +17,19 @@ builder.Services.AddMassTransit(x =>
 {
 
     x.AddConsumer<PaymentCompletedEventConsumer>();
+    x.AddConsumer<PaymentFailedEventConsumer>();
 
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.ReceiveEndpoint(RabbitMQSettings.OrderPaymentCompletedEventQueueuName, e =>
         {
-            // with e declare which consumer will listen this queue (StockOrderCreatedEventQueueName)
+            
             e.ConfigureConsumer<PaymentCompletedEventConsumer>(context);
+        });
+        cfg.ReceiveEndpoint(RabbitMQSettings.OrderPaymentFailedEventQueueuName, e =>
+        {
+           
+            e.ConfigureConsumer<PaymentFailedEventConsumer>(context);
         });
         cfg.Host(builder.Configuration.GetConnectionString("RabbitMQ"));
     });
